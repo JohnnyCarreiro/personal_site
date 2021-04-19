@@ -21,7 +21,7 @@ export const MainHero:React.FC<MainHeroProps> = ({children, ...props}) => {
             isPrimary
             primaryColor={false}
             text="Saiba mais"
-            link="#"
+            link="#projects"
             type="button"
           />
       </div>

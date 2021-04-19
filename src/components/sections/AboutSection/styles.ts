@@ -3,6 +3,18 @@ import styled from 'styled-components';
 export const Container = styled.div`
     background: ${({theme})=>theme.color.gray_500};
     padding: 4rem 0;
+    .about{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto;
+      max-width:1140px;
+      margin-bottom:3rem;
+      h1{
+        margin-bottom:1rem;
+      }
+    }
 
   .container{
     display:flex;
