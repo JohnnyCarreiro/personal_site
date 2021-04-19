@@ -8,16 +8,16 @@ import { Layout } from '../components/Layout'
 const IndexPage = () => (
   <Layout title="Home | connect gdn">
     <MainHero/>
-    <section>
+    <section id="about" >
       <AboutSection/>
     </section>
-    <section>
+    <section id="projects" >
       <ProjectsSection/>
     </section>
-    <section>
+    <section id="services" >
       <ServicesSection/>
     </section>
-    <section>
+    <section id="contact" >
       <RequestAMeetingSection/>
     </section>
   </Layout>

@@ -110,86 +110,6 @@ export const Container = styled.header`
         transform: scale(1.1);
     }
 
-    .dropdown{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 10rem;
-        transform: translateY(10px);
-        opacity: 0;
-        pointer-events: none;
-        transition: .5s;
-    }
-
-    .dropdown ul{
-        position: relative;
-    }
-
-    .dropdown-link > a{
-        display: flex;
-        background-color: ${({theme})=> theme.color.main};
-        color: ${({theme})=>theme.color.gray_900};
-        padding: .5rem 1rem;
-        font-size: .9rem;
-        align-items: center;
-        justify-content: space-between;
-        transition: .3s;
-    }
-
-    .dropdown-link:hover > a{
-        background-color: ${({theme})=>theme.color.secondary};
-        color: ${({theme})=>theme.color.gray_900};
-    }
-
-    .dropdown-link:not(:nth-last-child(2)){
-        border-bottom: 1px solid ${({theme})=>theme.color.secondary} ;
-    }
-
-    .dropdown-link svg{
-        transform: rotate(-90deg);
-    }
-
-    .arrow{
-        position: absolute;
-        width: 11px;
-        height: 11px;
-        top: -5.5px;
-        left: 32px;
-        background-color: ${({theme})=>theme.color.main};
-        transform: rotate(45deg);
-        cursor: pointer;
-        transition: .3s;
-        z-index: -1;
-    }
-
-    .dropdown-link:first-child:hover ~ .arrow{
-        background-color: ${({theme})=>theme.color.secondary};
-    }
-
-    .dropdown-link{
-        position: relative;
-    }
-
-    .dropdown.second{
-        top: 0;
-        left: 100%;
-        padding-left: .8rem;
-        cursor: pointer;
-        transform: translateX(10px);
-    }
-
-    .dropdown.second .arrow{
-        top: 10px;
-        left: -5.5px;
-    }
-
-    .nav-link:hover > .dropdown,
-    .dropdown-link:hover > .dropdown{
-        transform: translate(0, 0);
-        opacity: 1;
-        pointer-events: auto;
-    }
-
     .hamburger-menu-container{
         flex: 1;
         display: none;
@@ -292,21 +212,29 @@ export const Container = styled.header`
         .nav-links{
             flex: initial;
             width: 100%;
+            height:100%;
         }
 
         .nav-links > ul{
             flex-direction: column;
+            align-items:center;
+            justify-content:center;
+            margin:0 auto;
+            width:100%;
         }
 
         .nav-link{
-            width: 100%;
+            /* width: 100%; */
+            padding:0;
+            margin:0;
             opacity: 1;
-            transform: translateY(15px);
+            transform: translateY(25px);
         }
 
         .nav-link > a{
-            line-height: 1;
-            padding: 1.6rem 2rem;
+          font-size:1.75rem;
+          line-height: 1;
+          padding: 2rem 2rem;
         }
 
         .nav-link:hover > a{
@@ -314,18 +242,6 @@ export const Container = styled.header`
             background-color: ${({theme})=>theme.color.secondary};
         }
 
-        .dropdown, .dropdown.second{
-            position: initial;
-            top: initial;
-            left: initial;
-            transform: initial;
-            opacity: 1;
-            pointer-events: auto;
-            width: 100%;
-            padding: 0;
-            /* background-color: ${({theme})=>theme.color.gray_400}; */
-            display: none;
-        }
 
         .nav-link:hover > .dropdown,
         .dropdown-link:hover > .dropdown{
