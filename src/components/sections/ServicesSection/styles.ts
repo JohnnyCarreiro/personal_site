@@ -11,6 +11,10 @@ export const Container = styled.div`
 
   .title{
     margin-bottom:2rem;
+    > h3 {
+      padding-top:2rem;
+      line-height:2rem;
+    }
   }
 
   .wrapper{
@@ -36,12 +40,12 @@ export const Container = styled.div`
 
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    justify-content:flex-start;
     align-items:center;
     }
     .imageContainer{
-      height:10rem;
-      width:10rem;
+      height:9rem;
+      width:9rem;
 
       margin-bottom:2rem;
     }
@@ -55,6 +59,12 @@ export const Container = styled.div`
       }
     }
     @media screen and (max-width:1024px){
+      .title{
+        > h3 {
+          line-height:2rem;
+          padding: 2rem .5rem;
+        }
+      }
       .wrapper{
         flex-direction:column;
         flex-wrap: nowrap;
@@ -63,7 +73,13 @@ export const Container = styled.div`
         display:flex;
         flex-direction:column;
         align-items:center;
-        margin:0 2rem;
+        margin:0 auto;
+        width:250px;
+
+        .imageContainer {
+          height:8rem;
+          width:8rem;
+        }
 
         & + div{
           margin-top: 2rem;

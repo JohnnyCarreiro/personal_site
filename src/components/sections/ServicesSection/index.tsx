@@ -72,7 +72,7 @@ export const ServicesSection:React.FC = () => {
         </div>
       </div>
       <Button
-        link="#"
+        link="#contact"
         primaryColor={false}
         isPrimary={false}
         text="Saiba mais"
