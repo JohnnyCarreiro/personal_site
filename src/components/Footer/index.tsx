@@ -8,7 +8,7 @@ export const Footer:React.FC = () => {
           <strong>CONNECT</strong><small>GDN</small>
         </div>
         <div className="contact">
-          <p><a href="mailto:connect@connectgdn.com">connect@connectgdn.com</a></p>
+          <p><a href="mailto:johnny@johnnycarreiro.com">johnny@johnnycarreiro.com</a></p>
         </div>
         <div className="nav">
           <div>
@@ -17,16 +17,16 @@ export const Footer:React.FC = () => {
                 <a href="/">Inicio</a>
               </li>
               <li className="nav-link">
-                <a href="/">Sobre</a>
+                <a href="/#about">Sobre</a>
               </li>
               <li className="nav-link">
-                <a href="/">Projetos</a>
+                <a href="/#projects">Projetos</a>
               </li>
               <li className="nav-link">
-                <a href="/">Serviços</a>
+                <a href="/#services">Serviços</a>
               </li>
               <li className="nav-link">
-                <a href="/">Contato</a>
+                <a href="/#contact">Contato</a>
               </li>
             </ul>
           </div>
