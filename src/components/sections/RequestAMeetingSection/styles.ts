@@ -36,14 +36,22 @@ export const Container = styled.div`
         display:flex;
         flex-direction:column;
         align-items:flex-start;
-        margin:0 2rem;
-        max-width:1140px;
+        justify-content:center;
+        margin:0 auto;
+        width:100%;
 
         & + div{
           margin-top: 2rem;
         }
         .imageContainer{
           margin-bottom: 2rem;
+        }
+
+        .mainContent {
+          flex: 1;
+          padding:2rem;
+          align-items: center;
+          width:100%;
         }
       }
     }
