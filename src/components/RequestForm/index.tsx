@@ -1,8 +1,9 @@
-import { useCallback, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useCallback, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
 import * as Yup from 'yup'
+import axios from 'axios'
 
 import { Container } from './styles'
 import { Input } from 'components/Input'
@@ -16,13 +17,20 @@ interface SignInFormData {
   phone:number
   company:string
   subject:string
-  about:string
+  message:string
 }
 
 export function RequestForm() {
   const formRef = useRef<FormHandles>(null)
 
-  const history = useHistory()
+  const history = useRouter()
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [company, setCompany] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
 
   const handleSubmit = useCallback( async (data: SignInFormData) =>{
     try {
@@ -41,15 +49,24 @@ export function RequestForm() {
           .optional(),
         subject:Yup.string()
           .required('Assunto obrigatório'),
-        about:Yup.string()
+        message:Yup.string()
           .required('Messagem obrigatório'),
 
       })
       await schema.validate(data, {
         abortEarly:false
       })
-      console.log(data)
-      history.push('/')
+      const response = await axios.post('/api/submit', data)
+      if(response.status === 200 ){
+        console.log('200')
+        setName('')
+        setEmail('')
+        setPhone('')
+        setCompany('')
+        setSubject('')
+        setMessage('')
+        history.push('/')
+      }
 
     } catch (err){
       if(err instanceof Yup.ValidationError){
@@ -63,36 +80,48 @@ export function RequestForm() {
 
   return (
     <Container>
-     <Form ref={formRef}onSubmit={handleSubmit} >
+     <Form ref={formRef} onSubmit={handleSubmit} >
         <Input
           name="name"
           type="text"
           placeholder="Nome"
+          onChange={(event:React.ChangeEvent<HTMLInputElement>) => {setName(event.target.value)}}
+          value={name}
         />
         <Input
           name="email"
           type="email"
           placeholder="E-mail"
+          onChange={(event:React.ChangeEvent<HTMLInputElement>) => {setEmail(event.target.value)}}
+          value={email}
         />
         <Input
           name="phone"
           type="phone"
           placeholder="Telefone"
+          onChange={(event:React.ChangeEvent<HTMLInputElement>) => {setPhone(event.target.value)}}
+          value={phone}
         />
         <Input
           name="company"
           type="text"
           placeholder="Empresa"
+          onChange={(event:React.ChangeEvent<HTMLInputElement>) => {setCompany(event.target.value)}}
+          value={company}
         />
         <Input
           name="subject"
           type="text"
           placeholder="Assunto"
+          onChange={(event:React.ChangeEvent<HTMLInputElement>) => {setSubject(event.target.value)}}
+          value={subject}
         />
         <TextArea
-          name="about"
+          name="message"
           type="text"
           placeholder="Mensagem"
+          onChange={(event:React.ChangeEvent<HTMLInputElement>) => {setMessage(event.target.value)}}
+          value={message}
         />
         <Button text="Enviar" isPrimary primaryColor type="submit" />
       </Form>
