@@ -3,6 +3,9 @@ import { AboutSection } from 'components/sections/AboutSection'
 import { ProjectsSection } from 'components/sections/ProjectsSection'
 import { RequestAMeetingSection } from 'components/sections/RequestAMeetingSection'
 import { ServicesSection } from 'components/sections/ServicesSection'
+import { TechSection } from 'components/sections/TechSection'
+
+
 import { Layout } from '../components/Layout'
 
 const IndexPage = () => (
@@ -10,6 +13,7 @@ const IndexPage = () => (
     <MainHero/>
     <section style={{scrollPadding:"5rem 0 0 0"}} id="about" >
       <AboutSection/>
+      <TechSection/>
     </section>
     <section style={{scrollPadding:"5rem 0 0 0"}} id="projects" >
       <ProjectsSection/>
