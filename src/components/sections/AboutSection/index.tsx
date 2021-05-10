@@ -4,8 +4,8 @@ import { Container } from './styles'
 export const AboutSection:React.FC = () => {
   return (
     <Container>
-      <div className="about" >
-        <h1>Projetos </h1>
+      <div className="about">
+        <h1>About Me </h1>
         <p>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio. Atirei o pau no gatis, per gatis num morreus. Aenean aliquam molestie leo, vitae iaculis nisl.</p>
       </div>
       <div className="container">
