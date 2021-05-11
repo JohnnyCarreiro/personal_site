@@ -1,17 +1,20 @@
 import Button from 'components/Button'
+import { useVisibility } from 'utils/useVisibility'
 import { Service } from './Service'
 import { Container } from './styles'
 
 
 export const ServicesSection:React.FC = () => {
+  const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
+
   return (
-    <Container>
+    <Container ref={currentElement} >
       <div className="title">
         <h1>Serviços</h1>
         <h3>Você também pode contar com soluções<br/> individuais nas áreas que atuamos.</h3>
       </div>
       <div className="wrapper">
-        <Service className="container">
+        <Service isVisible={isVisible} className="container" delay={200} >
           <div className="imageContainer" >
             <img src="/images/services/business_intelligence.svg" alt="Back in Business"/>
           </div>
@@ -21,7 +24,7 @@ export const ServicesSection:React.FC = () => {
             </div>
           </div>
         </Service>
-        <Service className="container">
+        <Service isVisible={isVisible} className="container" delay={250} >
           <div className="imageContainer" >
             <img src="/images/services/design.svg" alt="Back in Business"/>
           </div>
@@ -31,7 +34,7 @@ export const ServicesSection:React.FC = () => {
             </div>
           </div>
         </Service>
-        <Service className="container">
+        <Service isVisible={isVisible} className="container" delay={300} >
           <div className="imageContainer" >
             <img src="/images/services/marketing.svg" alt="Back in Business"/>
           </div>
@@ -41,7 +44,7 @@ export const ServicesSection:React.FC = () => {
             </div>
           </div>
         </Service>
-        <Service className="container">
+        <Service isVisible={isVisible} className="container" delay={350} >
           <div className="imageContainer" >
             <img src="/images/services/tailor_maide.svg" alt="Back in Business"/>
           </div>
@@ -51,7 +54,7 @@ export const ServicesSection:React.FC = () => {
             </div>
           </div>
         </Service>
-        <Service className="container">
+        <Service isVisible={isVisible} className="container" delay={400} >
           <div className="imageContainer" >
             <img src="/images/services/web_app_development.svg" alt="Back in Business"/>
           </div>
@@ -61,7 +64,7 @@ export const ServicesSection:React.FC = () => {
             </div>
           </div>
         </Service>
-        <Service className="container">
+        <Service isVisible={isVisible} className="container" delay={450} >
           <div className="imageContainer" >
             <img src="/images/services/web_strategy.svg" alt="Back in Business"/>
           </div>
