@@ -1,16 +1,59 @@
+import { useRef, useState } from 'react'
+import { animated, config, useSpring } from 'react-spring'
+import { useVisibility } from '../../../utils/useVisibility'
 import { Container } from './styles'
+
+const calc = (x:number, y:number, rect:DOMRect, p?:number, n?:number, s?:number) => [
+  -(y - Number(rect?.top) - Number(rect?.height) /(p ? p : 2)) /(n ? n : 30),
+  (x - Number(rect?.left) - Number(rect?.width) /(p ? p : 2)) /(n ? n : 30),
+  (s ? s : 1.12),
+]
+const trans = (x:number, y:number, s:number) =>
+  `perspective(700px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 
 export const AboutSection:React.FC = () => {
+  const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
+
+  const textAnimation = useSpring({
+    from: { opacity: 0, scale: 0, config:{ easing:true } },
+    to: async (next, _) => {
+      isVisible && await next({ opacity: 1, scale:1, delay: 600 })
+    }
+  })
+  const textAnimation2 = useSpring({
+    from: { opacity: 0, scale: 0, config:{ easing:true } },
+    to: async (next, _) => {
+      isVisible && await next({ opacity: 1, scale:1, delay: 700 })
+    }
+  })
+
+  const ref = useRef<HTMLDivElement>(null)
+  const [xys, set] = useState([0, 0, 1])
+  const props = useSpring({ xys, config: config['wobbly'] })
+
+
   return (
-    <Container>
-      <div className="about">
+    <Container ref={currentElement} >
+      <animated.div className="about" style={textAnimation} >
         <h1>About Me </h1>
         <p>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio. Atirei o pau no gatis, per gatis num morreus. Aenean aliquam molestie leo, vitae iaculis nisl.</p>
-      </div>
-      <div className="container">
+      </animated.div>
+      <animated.div className="container" style={textAnimation2}>
         <div className="imageContainer" >
-          <img src="/images/backInBusiness.svg" alt="Back in Business"/>
+          <animated.div
+             ref={ref}
+             style={{
+              transform: props.xys.to(trans),
+            }}
+            onMouseLeave={() => set([0, 0, 1])}
+            onMouseMove={(e) => {
+              const rect = ref.current?.getBoundingClientRect()
+              set(calc(e.clientX, e.clientY, rect as DOMRect, 2, 30, 1.05))
+            }}
+          >
+            <img src="/images/backInBusiness.svg" alt="Back in Business" />
+          </animated.div>
         </div>
         <div className="mainContent">
           <div>
@@ -26,8 +69,9 @@ export const AboutSection:React.FC = () => {
             </p>
           </div>
         </div>
-      </div>
+      </animated.div>
     </Container>
   )
 }
+
 
