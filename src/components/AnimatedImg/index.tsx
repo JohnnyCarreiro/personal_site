@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, useRef, useState } from 'react'
+import { HTMLAttributes, useRef, useState } from 'react'
 import { a, config, useSpring } from '@react-spring/web'
 
 const calc = (x:number, y:number, rect:DOMRect, p?:number, n?:number, s?:number) => [
@@ -10,12 +10,11 @@ const trans = (x:number, y:number, s:number) =>
   `perspective(700px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 interface AnimatedImgProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode
   image: string
   alt: string
 }
 
-function AnimatedImg({ children,image, alt, ...rest }: AnimatedImgProps) {
+export const AnimatedImg:React.FC<AnimatedImgProps> = ({ image, alt, ...rest }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [xys, set] = useState([0, 0, 1])
   const props = useSpring({ xys, config: config['wobbly'] })
@@ -34,7 +33,5 @@ function AnimatedImg({ children,image, alt, ...rest }: AnimatedImgProps) {
     >
       <img src={image} alt={alt} />
     </a.div>
-  );
-};
-
-export default AnimatedImg;
+  )
+}
