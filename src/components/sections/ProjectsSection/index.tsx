@@ -1,4 +1,5 @@
 import Accordion from 'components/Accordion'
+import { AnimatedImg } from 'components/AnimatedImg'
 import { Project } from './Project'
 import { Container } from './styles'
 
@@ -11,28 +12,32 @@ export const ProjectsSection:React.FC = () => {
         <p>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio. Atirei o pau no gatis, per gatis num morreus. Aenean aliquam molestie leo, vitae iaculis nisl.</p>
       </div>
       <Project className="container" direction={'Right'} animation={'toRight'} >
-        <div className="imageContainer" >
-            <img src="/images/starter.svg" alt="Back in Business"/>
-          </div>
-          <div className="mainContent">
-            <h2>Projeto Inicial</h2>
+        <AnimatedImg
+          className="imageContainer"
+          image="/images/starter.svg"
+          alt="Start Projects image"
+        />
+        <div className="mainContent">
+          <h2>Projeto Inicial</h2>
+            <p>
+              Precisa começar ou formalizar sua empresa, este projeto existe para que você possa contar com soluções completas para o desenvolvimento e crescimento da sua maca.
+            </p>
+            <Accordion title="Saiba mais" >
+              <h3>Desenvolvimento da sua marca</h3>
               <p>
-                Precisa começar ou formalizar sua empresa, este projeto existe para que você possa contar com soluções completas para o desenvolvimento e crescimento da sua maca.
+                Antes de começar ou formalizar qualquer empresa é necessário se planejar e desenvolver sua marca. Isso vai além de uma logo bonita e um nome legal , sua marca é coisa mais importante da sua empresa, será a primeira coisa a ser vista pelo seu cliente e ela tem que ser impactante e transmitir de forma eficiente e clara o que sua empresa representa.<br/>
+                Mas só uma marca bem feita não garante o seu sucesso, planejamento é essencial. Para isso iremos te guiar em como você pode montar um planejamento estratégico e um plano de negócio, que com certeza será um diferencial na sua escalada para o sucesso.<br/>
+                Tenha certeza que você vai começar seu empreendimento com uma mapa e uma bússola.
               </p>
-              <Accordion title="Saiba mais" >
-                <h3>Desenvolvimento da sua marca</h3>
-                <p>
-                  Antes de começar ou formalizar qualquer empresa é necessário se planejar e desenvolver sua marca. Isso vai além de uma logo bonita e um nome legal , sua marca é coisa mais importante da sua empresa, será a primeira coisa a ser vista pelo seu cliente e ela tem que ser impactante e transmitir de forma eficiente e clara o que sua empresa representa.<br/>
-                  Mas só uma marca bem feita não garante o seu sucesso, planejamento é essencial. Para isso iremos te guiar em como você pode montar um planejamento estratégico e um plano de negócio, que com certeza será um diferencial na sua escalada para o sucesso.<br/>
-                  Tenha certeza que você vai começar seu empreendimento com uma mapa e uma bússola.
-                </p>
-              </Accordion>
+            </Accordion>
           </div>
       </Project>
       <Project direction="Left" animation={'toLeft'} className="container">
-      <div className="imageContainer" >
-          <img src="/images/small.svg" alt="Back in Business"/>
-        </div>
+        <AnimatedImg
+          className="imageContainer"
+          image="/images/small.svg"
+          alt="Small Projects Image"
+        />
         <div className="mainContent">
           <h2>Pequenos projetos</h2>
           <p>
@@ -48,11 +53,12 @@ export const ProjectsSection:React.FC = () => {
           </Accordion>
         </div>
       </Project>
-
       <Project direction="Right" animation="toRight" className="container">
-        <div className="imageContainer" >
-          <img src="/images/medium.svg" alt="Back in Business"/>
-        </div>
+        <AnimatedImg
+          className="imageContainer"
+          image="/images/medium.svg"
+          alt="Medium Projects Image"
+        />
         <div className="mainContent">
           <h2>Médios projetos</h2>
           <p>
@@ -69,11 +75,12 @@ export const ProjectsSection:React.FC = () => {
           </Accordion>
         </div>
       </Project>
-
       <Project direction="Left" animation="toLeft" className="container">
-        <div className="imageContainer" >
-          <img src="/images/large.svg" alt="Back in Business"/>
-        </div>
+        <AnimatedImg
+          className="imageContainer"
+          image="/images/large.svg"
+          alt="Enterprise Projects Image"
+        />
         <div className="mainContent">
           <h2>Grandes projetos</h2>
           <p>
