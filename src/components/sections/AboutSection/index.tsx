@@ -1,3 +1,4 @@
+import { AnimatedImg } from 'components/AnimatedImg'
 import { useRef, useState } from 'react'
 import { animated, config, useSpring } from 'react-spring'
 import { useVisibility } from '../../../utils/useVisibility'
@@ -41,19 +42,10 @@ export const AboutSection:React.FC = () => {
       </animated.div>
       <animated.div className="container" style={textAnimation2}>
         <div className="imageContainer" >
-          <animated.div
-             ref={ref}
-             style={{
-              transform: props.xys.to(trans),
-            }}
-            onMouseLeave={() => set([0, 0, 1])}
-            onMouseMove={(e) => {
-              const rect = ref.current?.getBoundingClientRect()
-              set(calc(e.clientX, e.clientY, rect as DOMRect, 2, 30, 1.05))
-            }}
-          >
-            <img src="/images/backInBusiness.svg" alt="Back in Business" />
-          </animated.div>
+          <AnimatedImg
+            image="/images/backInBusiness.svg"
+            alt="Back in Business"
+          />
         </div>
         <div className="mainContent">
           <div>
