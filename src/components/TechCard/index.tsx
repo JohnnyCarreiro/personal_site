@@ -1,5 +1,5 @@
 import { ReactNode, useRef, useState } from "react"
-import { useSpring, config } from "react-spring"
+import { useSpring, config, UseSpringProps } from "react-spring"
 
 
 import {
@@ -32,6 +32,7 @@ interface TechCardProps {
   link?: string
   bgColor: string
   buttonColor: string
+  style?: UseSpringProps
 }
 
 function TechCard({
@@ -42,7 +43,8 @@ function TechCard({
   cta,
   link,
   bgColor,
-  buttonColor
+  buttonColor,
+  style
 }: TechCardProps) {
 
   const ref = useRef<HTMLDivElement>(null)
@@ -54,7 +56,8 @@ function TechCard({
       <TechContainer
         ref={ref}
         style={{
-          transform: props.xys.to(trans)
+          transform: props.xys.to(trans),
+          ...style
         }}
         onMouseLeave={() => set([0, 0, 1])}
         onMouseMove={(e) => {

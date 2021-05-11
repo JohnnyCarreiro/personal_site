@@ -1,10 +1,22 @@
+import { useSpring } from 'react-spring'
 import TechCard from 'components/TechCard'
+import { useVisibility } from 'utils/useVisibility'
 import { Container } from './styles'
 
 
 export function TechSection() {
+
+  const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
+
+  const componentAnimation = useSpring({
+    from: { opacity: 0, scale: 0 },
+    to: async (next, _) => {
+      isVisible && await next({ opacity: 1, scale:1, delay: 600 })
+    }
+  })
+
   return (
-    <Container>
+    <Container ref={currentElement} >
       <TechCard
           techTitle={'Typescript'}
           techSubtitle={'Javascript with super powers'}
@@ -13,6 +25,7 @@ export function TechSection() {
           link={'#'}
           bgColor={'#94c4eb'}
           buttonColor={'#007acc'}
+          style={componentAnimation}
         >
           <img src="/images/techs/typescript-rounded.svg" alt="typescript logo"/>
         </TechCard>
@@ -24,6 +37,7 @@ export function TechSection() {
           link={'#'}
           bgColor={'#bfbfbf'}
           buttonColor={'#010101'}
+          style={componentAnimation}
         >
           <img src="/images/techs/next-rounded.svg" alt="typescript logo"/>
         </TechCard>
@@ -35,6 +49,7 @@ export function TechSection() {
           link={'#'}
           bgColor={'#aed8a6'}
           buttonColor={'#529e45'}
+          style={componentAnimation}
         >
           <img src="/images/techs/node-rounded.svg" alt="typescript logo"/>
         </TechCard>
@@ -46,6 +61,7 @@ export function TechSection() {
           link={'#'}
           bgColor={'#8cd9f3'}
           buttonColor={'#6ecff0'}
+          style={componentAnimation}
         >
           <img src="/images/techs/react-rounded.svg" alt="typescript logo"/>
         </TechCard>
@@ -57,6 +73,7 @@ export function TechSection() {
           link={'#'}
           bgColor={'#f0a38e'}
           buttonColor={'#e35026'}
+          style={componentAnimation}
         >
           <img src="/images/techs/html5-rounded.svg" alt="typescript logo"/>
         </TechCard>
@@ -68,6 +85,7 @@ export function TechSection() {
           link={'#'}
           bgColor={'#e09fbe'}
           buttonColor={'#ce6899'}
+          style={componentAnimation}
         >
           <img src="/images/techs/sass-rounded.svg" alt="typescript logo"/>
         </TechCard>

@@ -5,7 +5,7 @@ interface TechCircleColor {
   bgColor: string
 }
 
-export const CardWrapper = styled.div`
+export const CardWrapper = styled(animated.div)`
   perspective:2000;
   display: flex;
   align-items: center;
