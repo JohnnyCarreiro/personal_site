@@ -1,39 +1,39 @@
 import Accordion from 'components/Accordion'
+import { Project } from './Project'
 import { Container } from './styles'
 
 
 export const ProjectsSection:React.FC = () => {
   return (
     <Container>
-      <div className="projects" >
+      <div className="projects">
         <h1>Projetos </h1>
         <p>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio. Atirei o pau no gatis, per gatis num morreus. Aenean aliquam molestie leo, vitae iaculis nisl.</p>
       </div>
-      <div className="container1">
-        <div className="imageContainer1" >
-          <img src="/images/starter.svg" alt="Back in Business"/>
-        </div>
-        <div className="mainContent1">
-          <h2>Projeto Inicial</h2>
-          <p>
-            Precisa começar ou formalizar sua empresa, este projeto existe para que você possa contar com soluções completas para o desenvolvimento e crescimento da sua maca.
-          </p>
-          <Accordion title="Saiba mais" >
-            <h3>Desenvolvimento da sua marca</h3>
-            <p>
-              Antes de começar ou formalizar qualquer empresa é necessário se planejar e desenvolver sua marca. Isso vai além de uma logo bonita e um nome legal , sua marca é coisa mais importante da sua empresa, será a primeira coisa a ser vista pelo seu cliente e ela tem que ser impactante e transmitir de forma eficiente e clara o que sua empresa representa.<br/>
-              Mas só uma marca bem feita não garante o seu sucesso, planejamento é essencial. Para isso iremos te guiar em como você pode montar um planejamento estratégico e um plano de negócio, que com certeza será um diferencial na sua escalada para o sucesso.<br/>
-              Tenha certeza que você vai começar seu empreendimento com uma mapa e uma bússola.
-            </p>
-          </Accordion>
-        </div>
-      </div>
-
-      <div className="container2">
-        <div className="imageContainer2" >
+      <Project className="container" direction={'Right'} animation={'toRight'} >
+        <div className="imageContainer" >
+            <img src="/images/starter.svg" alt="Back in Business"/>
+          </div>
+          <div className="mainContent">
+            <h2>Projeto Inicial</h2>
+              <p>
+                Precisa começar ou formalizar sua empresa, este projeto existe para que você possa contar com soluções completas para o desenvolvimento e crescimento da sua maca.
+              </p>
+              <Accordion title="Saiba mais" >
+                <h3>Desenvolvimento da sua marca</h3>
+                <p>
+                  Antes de começar ou formalizar qualquer empresa é necessário se planejar e desenvolver sua marca. Isso vai além de uma logo bonita e um nome legal , sua marca é coisa mais importante da sua empresa, será a primeira coisa a ser vista pelo seu cliente e ela tem que ser impactante e transmitir de forma eficiente e clara o que sua empresa representa.<br/>
+                  Mas só uma marca bem feita não garante o seu sucesso, planejamento é essencial. Para isso iremos te guiar em como você pode montar um planejamento estratégico e um plano de negócio, que com certeza será um diferencial na sua escalada para o sucesso.<br/>
+                  Tenha certeza que você vai começar seu empreendimento com uma mapa e uma bússola.
+                </p>
+              </Accordion>
+          </div>
+      </Project>
+      <Project direction="Left" animation={'toLeft'} className="container">
+      <div className="imageContainer" >
           <img src="/images/small.svg" alt="Back in Business"/>
         </div>
-        <div className="mainContent2">
+        <div className="mainContent">
           <h2>Pequenos projetos</h2>
           <p>
             Esses projetos destinam-se a aqueles clientes que desejam possuir sua própria plataforma, seus dados e veem a necessidade no futuro de poder personalizar toda sua experiência de oferta de produtos e serviços.
@@ -47,13 +47,13 @@ export const ProjectsSection:React.FC = () => {
             </p>
           </Accordion>
         </div>
-      </div>
+      </Project>
 
-      <div className="container1">
-        <div className="imageContainer1" >
+      <Project direction="Right" animation="toRight" className="container">
+        <div className="imageContainer" >
           <img src="/images/medium.svg" alt="Back in Business"/>
         </div>
-        <div className="mainContent1">
+        <div className="mainContent">
           <h2>Médios projetos</h2>
           <p>
             À medida que as vendas aumentam e o pessoal aumenta, surge uma maior necessidade de automação. Os detalhes se tornam mais importantes à medida que o número de visitantes aumenta, e pequenas coisas podem fazer uma grande diferença.
@@ -68,13 +68,13 @@ export const ProjectsSection:React.FC = () => {
             </p>
           </Accordion>
         </div>
-      </div>
+      </Project>
 
-      <div className="container2">
-        <div className="imageContainer2" >
+      <Project direction="Left" animation="toLeft" className="container">
+        <div className="imageContainer" >
           <img src="/images/large.svg" alt="Back in Business"/>
         </div>
-        <div className="mainContent2">
+        <div className="mainContent">
           <h2>Grandes projetos</h2>
           <p>
             Quando uma empresa está aqui, percebe que, para obter o melhor resultado possível para o seu negócio, a equipe precisa das melhores ferramentas possíveis e essas ferramentas muitas vezes precisam ser personalizadas.
@@ -91,7 +91,7 @@ export const ProjectsSection:React.FC = () => {
             </p>
           </Accordion>
         </div>
-      </div>
+      </Project>
     </Container>
   )
 }
