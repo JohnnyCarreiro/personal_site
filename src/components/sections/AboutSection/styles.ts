@@ -12,8 +12,11 @@ export const Container = styled.div`
       margin:0 auto;
       max-width:1140px;
       margin-bottom:3rem;
-      h1{
+      > h2{
         margin-bottom:1rem;
+      }
+      > h4 {
+        text-align: center;
       }
     }
 

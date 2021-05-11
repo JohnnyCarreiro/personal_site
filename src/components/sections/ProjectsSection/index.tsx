@@ -1,16 +1,28 @@
+import { useSpring, a } from '@react-spring/web'
 import Accordion from 'components/Accordion'
 import { AnimatedImg } from 'components/AnimatedImg'
+import { useVisibility } from 'utils/useVisibility'
 import { Project } from './Project'
 import { Container } from './styles'
 
 
 export const ProjectsSection:React.FC = () => {
+  const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
+
+  const animation = useSpring({
+    from: { opacity: 0, scale: 0, config:{ easing:true } },
+    to: async (next, _) => {
+      isVisible && await next({ opacity: 1, scale:1, delay: 400 })
+    }
+  })
   return (
-    <Container>
-      <div className="projects">
-        <h1>Projetos </h1>
-        <p>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio. Atirei o pau no gatis, per gatis num morreus. Aenean aliquam molestie leo, vitae iaculis nisl.</p>
-      </div>
+    <Container ref={currentElement} >
+      <a.div className="projects" style={animation} >
+        <h2>Projetos </h2>
+        <h4>
+          Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet.
+        </h4>
+      </a.div>
       <Project className="container" direction={'Right'} animation={'toRight'} >
         <AnimatedImg
           className="imageContainer"
@@ -18,7 +30,7 @@ export const ProjectsSection:React.FC = () => {
           alt="Start Projects image"
         />
         <div className="mainContent">
-          <h2>Projeto Inicial</h2>
+          <h3>Projeto Inicial</h3>
             <p>
               Precisa começar ou formalizar sua empresa, este projeto existe para que você possa contar com soluções completas para o desenvolvimento e crescimento da sua maca.
             </p>
@@ -39,7 +51,7 @@ export const ProjectsSection:React.FC = () => {
           alt="Small Projects Image"
         />
         <div className="mainContent">
-          <h2>Pequenos projetos</h2>
+          <h3>Pequenos projetos</h3>
           <p>
             Esses projetos destinam-se a aqueles clientes que desejam possuir sua própria plataforma, seus dados e veem a necessidade no futuro de poder personalizar toda sua experiência de oferta de produtos e serviços.
           </p>
@@ -60,7 +72,7 @@ export const ProjectsSection:React.FC = () => {
           alt="Medium Projects Image"
         />
         <div className="mainContent">
-          <h2>Médios projetos</h2>
+          <h3>Médios projetos</h3>
           <p>
             À medida que as vendas aumentam e o pessoal aumenta, surge uma maior necessidade de automação. Os detalhes se tornam mais importantes à medida que o número de visitantes aumenta, e pequenas coisas podem fazer uma grande diferença.
           </p>
@@ -82,7 +94,7 @@ export const ProjectsSection:React.FC = () => {
           alt="Enterprise Projects Image"
         />
         <div className="mainContent">
-          <h2>Grandes projetos</h2>
+          <h3>Grandes projetos</h3>
           <p>
             Quando uma empresa está aqui, percebe que, para obter o melhor resultado possível para o seu negócio, a equipe precisa das melhores ferramentas possíveis e essas ferramentas muitas vezes precisam ser personalizadas.
           </p>

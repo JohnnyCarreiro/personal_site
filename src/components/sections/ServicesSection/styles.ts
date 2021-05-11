@@ -11,9 +11,9 @@ export const Container = styled.div`
 
   .title{
     margin-bottom:2rem;
-    > h3 {
-      padding-top:2rem;
-      line-height:2rem;
+    > h4 {
+      padding-top:1rem;
+      line-height:1.5rem;
     }
   }
 
@@ -28,9 +28,9 @@ export const Container = styled.div`
 
   @media screen and (max-width:1024px){
     .title{
-      > h3 {
+      > h4 {
         line-height:2rem;
-        padding: 2rem .5rem;
+        padding: 1rem .5rem 2rem;
       }
     }
     .wrapper{

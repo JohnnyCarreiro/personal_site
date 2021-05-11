@@ -1,3 +1,4 @@
+import { a, useSpring } from '@react-spring/web'
 import Button from 'components/Button'
 import { useVisibility } from 'utils/useVisibility'
 import { Service } from './Service'
@@ -7,12 +8,19 @@ import { Container } from './styles'
 export const ServicesSection:React.FC = () => {
   const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
 
+  const animation = useSpring({
+    from: { opacity: 0, scale: 0, config:{ easing:true } },
+    to: async (next, _) => {
+      isVisible && await next({ opacity: 1, scale:1, delay: 200 })
+    }
+  })
+
   return (
     <Container ref={currentElement} >
-      <div className="title">
-        <h1>Serviços</h1>
-        <h3>Você também pode contar com soluções<br/> individuais nas áreas que atuamos.</h3>
-      </div>
+      <a.div className="title" style={animation} >
+        <h2>Serviços</h2>
+        <h4>Você também pode contar com soluções<br/> individuais nas áreas que atuamos.</h4>
+      </a.div>
       <div className="wrapper">
         <Service isVisible={isVisible} className="container" delay={200} >
           <div className="imageContainer" >

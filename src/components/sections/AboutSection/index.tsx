@@ -1,17 +1,8 @@
+import { animated, useSpring } from 'react-spring'
+
 import { AnimatedImg } from 'components/AnimatedImg'
-import { useRef, useState } from 'react'
-import { animated, config, useSpring } from 'react-spring'
 import { useVisibility } from '../../../utils/useVisibility'
 import { Container } from './styles'
-
-const calc = (x:number, y:number, rect:DOMRect, p?:number, n?:number, s?:number) => [
-  -(y - Number(rect?.top) - Number(rect?.height) /(p ? p : 2)) /(n ? n : 30),
-  (x - Number(rect?.left) - Number(rect?.width) /(p ? p : 2)) /(n ? n : 30),
-  (s ? s : 1.12),
-]
-const trans = (x:number, y:number, s:number) =>
-  `perspective(700px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
-
 
 export const AboutSection:React.FC = () => {
   const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
@@ -29,16 +20,13 @@ export const AboutSection:React.FC = () => {
     }
   })
 
-  const ref = useRef<HTMLDivElement>(null)
-  const [xys, set] = useState([0, 0, 1])
-  const props = useSpring({ xys, config: config['wobbly'] })
-
-
   return (
     <Container ref={currentElement} >
       <animated.div className="about" style={textAnimation} >
-        <h1>About Me </h1>
-        <p>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio. Atirei o pau no gatis, per gatis num morreus. Aenean aliquam molestie leo, vitae iaculis nisl.</p>
+        <h2>About Me </h2>
+        <h4>
+          Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim.
+        </h4>
       </animated.div>
       <animated.div className="container" style={textAnimation2}>
         <div className="imageContainer" >
