@@ -46,10 +46,9 @@ const GlobalStyle = createGlobalStyle<Props>`
     strong{
       font:${({theme})=>theme.texts.main_strong};
     }
-    a, a:visited, a:hover, a:active {
-      color: inherit;
-      text-decoration: none;
-      /* color:${({theme})=>theme.color.gray_600}; */
+    a{
+        text-decoration: none;
+        color:${({theme})=>theme.color.gray_600};
     }
     ul{
         list-style:none;
