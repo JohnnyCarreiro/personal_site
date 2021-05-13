@@ -21,15 +21,29 @@ export const Container = styled.div`
     margin:0 auto;
     width:100%;
     max-width:1140px;
-    }
-    .imageContainer{
+  }
+    .contactContainer {
       flex:1;
-      height:100%;
-      width:100%;
-      padding-right: 2rem;
-
-      img{
+      .contact {
+        display: flex;
+        align-items: center;
+        & + div {
+          margin-top: .5rem;
+        }
+        svg {
+          font-size:1.5rem;
+          margin-right: 1rem;
+        }
+      }
+      .imageContainer{
+        flex:1;
+        height:100%;
         width:100%;
+        padding-right: 2rem;
+
+        img{
+          width:100%;
+        }
       }
     }
     .mainContent{
@@ -60,11 +74,12 @@ export const Container = styled.div`
         & + div{
           margin-top: 2rem;
         }
-        .imageContainer{
+        .contactContainer {
           padding: 0 2rem;
-          margin-bottom: 2rem;
+          .imageContainer{
+            margin-bottom: 2rem;
+          }
         }
-
         .mainContent {
           flex: 1;
           padding:2rem;
