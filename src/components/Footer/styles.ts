@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   background:${({theme})=>theme.color.gray_200};
@@ -38,14 +38,11 @@ export const Container = styled.div`
       align-items: center;
       justify-content:center;
 
-      li {
+      li{
         & + li{
           padding-left:2rem;
         }
       }
-      .nav-link {
-        color:${({theme})=>theme.color.gray_800};
-      }
     }
   }
-`
+`;

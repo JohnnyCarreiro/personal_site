@@ -14,19 +14,19 @@ export const Footer:React.FC = () => {
           <div>
             <ul>
               <li className="nav-link">
-                <a href="/">Inicio</a>
+                <a href="/"><p>Inicio</p></a>
               </li>
               <li className="nav-link">
-                <a href="/#about">Sobre</a>
+                <a href="/#about"><p>Sobre</p></a>
               </li>
               <li className="nav-link">
-                <a href="/#projects">Projetos</a>
+                <a href="/#projects"><p>Projetos</p></a>
               </li>
               <li className="nav-link">
-                <a href="/#services">Serviços</a>
+                <a href="/#services"><p>Serviços</p></a>
               </li>
               <li className="nav-link">
-                <a href="/#contact">Contato</a>
+                <a href="/#contact"><p>Contato</p></a>
               </li>
             </ul>
           </div>
