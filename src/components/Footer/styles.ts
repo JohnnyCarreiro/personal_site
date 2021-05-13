@@ -32,6 +32,9 @@ export const Container = styled.div`
   }
   .nav{
     display:flex;
+    .nav-link {
+      color: ${({theme})=> theme.color.gray_800};
+    }
 
     div > ul{
       display: flex;
