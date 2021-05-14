@@ -56,34 +56,6 @@ export default function IndexPage({ }: ContentProps) {
   )
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const prismic = getPrismicClient()
-
-//   const response = await prismic.query([
-//     Prismic.predicates.at('document.type', 'home_page')
-//   ], {
-//     lang:'en-us'
-//   })
-//   const content = response.results.map(content => {
-//     return { hero_section:
-//       {
-//         hero_cover:content.data.hero_cover.url,
-//         hero_title: RichText.asText(content.data.hero_title),
-//         hero_subtitle: RichText.asText(content.data.hero_subtitle),
-//       },
-//       about_section: content.data.body[0],
-//       projects_section:content.data.body[1]
-//     }
-//   })
-//   // console.log('Results with Lang',content)
-
-//   return {
-//     props: {
-//       content
-//     },
-//     revalidate: 60 * 60 * 24 //24 hours
-//   }
-// }
 export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient()
 
