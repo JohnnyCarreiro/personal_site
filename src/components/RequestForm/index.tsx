@@ -58,7 +58,6 @@ export function RequestForm() {
       })
       const response = await axios.post('/api/submit', data)
       if(response.status === 200 ){
-        console.log('200')
         setName('')
         setEmail('')
         setPhone('')

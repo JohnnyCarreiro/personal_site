@@ -10,10 +10,12 @@ interface ProjectProps extends HTMLAttributes<HTMLDivElement>{
   animation?: 'toRight' | 'toLeft'
 }
 
-export const Project:React.FC<ProjectProps> = ({ children, direction, animation,...rest }) => {
-  if(rest.className === 'container1'){
-    console.log("Container 1")
-  }
+export const Project:React.FC<ProjectProps> = ({
+  children,
+  direction,
+  animation,
+  ...rest
+}) => {
 
   const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
 
