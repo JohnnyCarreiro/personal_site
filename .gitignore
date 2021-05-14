@@ -33,3 +33,5 @@ envconfig.ts
 
 # vercel
 .vercel
+# Prismic
+prismicData.json
