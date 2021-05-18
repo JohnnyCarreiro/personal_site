@@ -14,28 +14,78 @@ import { getPrismicClient } from 'services/prismic'
 
 import { Layout } from '../components/Layout'
 
-interface HeroProps {
-  hero_cover:string
-  hero_title:string
-  hero_subtitle:string
-}
-
-interface AboutProps {
-  items: Array<object>
-  primary: Array<object>
-}
-interface ProjectsProps {
-  items: Array<object>
-  primary: Array<object>
-}
 
 interface ContentProps{
-  hero_section: HeroProps
-  about_section: AboutProps
-  projects_section: ProjectsProps
+  content: Array<{
+    hero_section: {
+      main_title: string
+      subtitle: string
+      cta_button: string
+      hero_image: string
+    }
+    about_section: {
+      main_title: string
+      subtitle: string
+      image: string
+      contents: Array<{
+        title: string
+        content: string
+      }>
+    }
+    stacks: Array<{
+      stack_image: string
+      stack_title: string
+      tech_subtitle: string
+      more_informations: string
+      cta: string
+      bg_color: string
+      button_color: string
+    }>
+    projects_section:{
+      projects_title: string
+      projects_subtitle: string
+      projects: Array<{
+        project_image: string
+        project_title: string
+        summary: string
+        cta_text: string
+        project_subtitle: string
+        project_text: string
+        direction: string
+        animation_direction: string
+      }>
+    }
+    skills_section: {
+      skills_tiltle: string
+      skills_subtile: string
+      skills: Array<{
+        skill_image: string
+        skill_title: string
+      }>
+    }
+    contacts_section: {
+      contact_title: string
+      contact_subtitle: string
+      form_fields: {
+        name_label: string
+        name_field: string
+        email_label: string
+        email_field: string
+        phone_label: string
+        phone_field: string
+        company_label: string
+        company_field: string
+        subject_label: string
+        subject_field: string
+        message_label: string
+        message_field: string
+        whatsapp_message: string
+      }
+    }
+  }>
 }
 
-export default function IndexPage({ }: ContentProps) {
+export default function IndexPage({ content }: ContentProps) {
   const { locale } = useRouter()
 
   return (
@@ -44,7 +94,7 @@ export default function IndexPage({ }: ContentProps) {
         ? 'Home | Johnny Carreiro'
         : 'Inicio | Johnny Carreiro'
     }>
-      <MainHero/>
+      <MainHero content_data={content[0].hero_section} />
       <section style={{scrollPadding:"5rem 0 0 0"}} id="about" >
         <AboutSection/>
         <TechSection/>
@@ -137,19 +187,19 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       contact_title: RichText.asText(contactsSection.primary.contact_title),
       contact_subtitle: RichText.asText(contactsSection.primary.contact_subtitle),
       form_fields: {
-      name_label: RichText.asText(contactsSection.primary.name_label),
-      name_field: RichText.asText(contactsSection.primary.name_field),
-      email_label: RichText.asText(contactsSection.primary.email_label),
-      email_field: RichText.asText(contactsSection.primary.email_field),
-      phone_label: RichText.asText(contactsSection.primary.phone_label),
-      phone_field: RichText.asText(contactsSection.primary.phone_field),
-      company_label: RichText.asText(contactsSection.primary.company_label),
-      company_field: RichText.asText(contactsSection.primary.company_field),
-      subject_label: RichText.asText(contactsSection.primary.subject_label),
-      subject_field: RichText.asText(contactsSection.primary.subject_field),
-      message_label: RichText.asText(contactsSection.primary.message_label),
-      message_field: RichText.asText(contactsSection.primary.message_field),
-      whatsapp_message: RichText.asText(contactsSection.primary.whatsapp_message),
+        name_label: RichText.asText(contactsSection.primary.name_label),
+        name_field: RichText.asText(contactsSection.primary.name_field),
+        email_label: RichText.asText(contactsSection.primary.email_label),
+        email_field: RichText.asText(contactsSection.primary.email_field),
+        phone_label: RichText.asText(contactsSection.primary.phone_label),
+        phone_field: RichText.asText(contactsSection.primary.phone_field),
+        company_label: RichText.asText(contactsSection.primary.company_label),
+        company_field: RichText.asText(contactsSection.primary.company_field),
+        subject_label: RichText.asText(contactsSection.primary.subject_label),
+        subject_field: RichText.asText(contactsSection.primary.subject_field),
+        message_label: RichText.asText(contactsSection.primary.message_label),
+        message_field: RichText.asText(contactsSection.primary.message_field),
+        whatsapp_message: RichText.asText(contactsSection.primary.whatsapp_message),
       }
       }
     }
