@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom'
 
@@ -35,9 +36,14 @@ interface ContentProps{
 }
 
 export default function IndexPage({ }: ContentProps) {
+  const { locale } = useRouter()
 
   return (
-    <Layout title="Home | connect gdn">
+    <Layout title={
+      locale === 'en-us'
+        ? 'Home | Johnny Carreiro'
+        : 'Inicio | Johnny Carreiro'
+    }>
       <MainHero/>
       <section style={{scrollPadding:"5rem 0 0 0"}} id="about" >
         <AboutSection/>
@@ -56,13 +62,13 @@ export default function IndexPage({ }: ContentProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const prismic = getPrismicClient()
 
   const response = await prismic.query([
     Prismic.predicates.at('document.type', 'page')
   ], {
-    lang:'en-us'
+    lang:String(locale)
   })
   const content = response.results.map(content => {
     const heroSection = content.data.body.find((section:any) => section.slice_type === 'hero_section')
@@ -72,25 +78,26 @@ export const getStaticProps: GetStaticProps = async () => {
     const skillsSection = content.data.body.find((section: any) => section.slice_type === 'services_section')
     const contactsSection = content.data.body.find((section: any) => section.slice_type === 'contacts_sections')
     return {
-     hero_section: {
-       main_title: RichText.asText(heroSection.primary.main_title),
-       subtitle: RichText.asText(heroSection.primary.subtitle),
-       cta_button: RichText.asText(heroSection.primary.cta_button),
-       hero_image: heroSection.primary.hero_image.url
-     },
-     about_section: {
-       main_title: RichText.asText(aboutSection.primary.about_title),
-       subtitle: RichText.asText(aboutSection.primary.subtitle),
-       image: aboutSection.primary.section_image.url,
-       contents: aboutSection.items.map((content: any) => {
-         return {
-           title: RichText.asText(content.title),
-           content: RichText.asText(content.content)
-         }
-       }),
-     },
-     stacks: stacksSection.items.map((stack: any) => {
-       return {
+      lang: content.lang,
+      hero_section: {
+        main_title: RichText.asText(heroSection.primary.main_title),
+        subtitle: RichText.asText(heroSection.primary.subtitle),
+        cta_button: RichText.asText(heroSection.primary.cta_button),
+        hero_image: heroSection.primary.hero_image.url
+      },
+      about_section: {
+        main_title: RichText.asText(aboutSection.primary.about_title),
+        subtitle: RichText.asText(aboutSection.primary.subtitle),
+        image: aboutSection.primary.section_image.url,
+        contents: aboutSection.items.map((content: any) => {
+          return {
+            title: RichText.asText(content.title),
+            content: RichText.asText(content.content)
+          }
+        }),
+      },
+      stacks: stacksSection.items.map((stack: any) => {
+        return {
         stack_image: stack.stack_image.url,
         stack_title: RichText.asText(stack.stack_title),
         tech_subtitle: RichText.asText(stack.tech_subtitle),
@@ -98,9 +105,9 @@ export const getStaticProps: GetStaticProps = async () => {
         cta: RichText.asText(stack.cta),
         bg_color: RichText.asText(stack.bg_color),
         button_color: RichText.asText(stack.button_color),
-       }
-     }),
-     projects_section:{
+        }
+      }),
+      projects_section:{
       projects_title: RichText.asText(projectsSection.primary.projects_title),
       projects_subtitle: RichText.asText(projectsSection.primary.projects_subtitle),
       projects: projectsSection.items.map((project: any) => {
@@ -115,8 +122,8 @@ export const getStaticProps: GetStaticProps = async () => {
           animation_direction: RichText.asText(project.animation_direction)
         }
       })
-     },
-     skills_section: {
+      },
+      skills_section: {
       skills_tiltle: RichText.asText(skillsSection.primary.skills_tiltle),
       skills_subtile: RichText.asText(skillsSection.primary.skills_subtile),
       skills: skillsSection.items.map((skill: any) => {
@@ -125,8 +132,8 @@ export const getStaticProps: GetStaticProps = async () => {
           skill_title: RichText.asText(skill.skill_title)
         }
       })
-     },
-     contacts_section: {
+      },
+      contacts_section: {
       contact_title: RichText.asText(contactsSection.primary.contact_title),
       contact_subtitle: RichText.asText(contactsSection.primary.contact_subtitle),
       form_fields: {
@@ -144,7 +151,7 @@ export const getStaticProps: GetStaticProps = async () => {
       message_field: RichText.asText(contactsSection.primary.message_field),
       whatsapp_message: RichText.asText(contactsSection.primary.whatsapp_message),
       }
-     }
+      }
     }
   })
 
@@ -152,6 +159,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       content
     },
-    revalidate: 60 * 60 * 24 //24 hours
+    // revalidate: 60 * 60 * 24 //24 hours
   }
 }
