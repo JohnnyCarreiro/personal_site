@@ -88,15 +88,17 @@ interface ContentProps{
 export default function IndexPage({ content }: ContentProps) {
   const { locale } = useRouter()
 
+  const { hero_section, about_section } = content[0]
+
   return (
     <Layout title={
       locale === 'en-us'
         ? 'Home | Johnny Carreiro'
         : 'Inicio | Johnny Carreiro'
     }>
-      <MainHero content_data={content[0].hero_section} />
+      <MainHero content_data={hero_section} />
       <section style={{scrollPadding:"5rem 0 0 0"}} id="about" >
-        <AboutSection/>
+        <AboutSection content_data={about_section} />
         <TechSection/>
       </section>
       <section style={{scrollPadding:"5rem 0 0 0"}} id="projects" >
@@ -142,7 +144,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         contents: aboutSection.items.map((content: any) => {
           return {
             title: RichText.asText(content.title),
-            content: RichText.asText(content.content)
+            content: RichText.asHtml(content.content)
           }
         }),
       },
