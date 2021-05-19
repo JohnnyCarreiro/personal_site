@@ -7,7 +7,7 @@ import { MainHero } from 'components/MainHero'
 import { AboutSection } from 'components/sections/AboutSection'
 import { ProjectsSection } from 'components/sections/ProjectsSection'
 import { RequestAMeetingSection } from 'components/sections/RequestAMeetingSection'
-import { ServicesSection } from 'components/sections/ServicesSection'
+import { SkillsSection } from 'components/sections/ServicesSection'
 import { TechSection } from 'components/sections/TechSection'
 import { getPrismicClient } from 'services/prismic'
 
@@ -92,7 +92,8 @@ export default function IndexPage({ content }: ContentProps) {
     hero_section,
     about_section,
     stacks,
-    projects_section
+    projects_section,
+    skills_section
   } = content[0]
 
   return (
@@ -110,7 +111,7 @@ export default function IndexPage({ content }: ContentProps) {
         <ProjectsSection content_data={projects_section} />
       </section>
       <section style={{scrollPadding:"5rem 0 0 0"}} id="services" >
-        <ServicesSection/>
+        <SkillsSection content_data={skills_section} />
       </section>
       <section style={{scrollPadding:"5rem 0 0 0"}} id="contact" >
         <RequestAMeetingSection/>
