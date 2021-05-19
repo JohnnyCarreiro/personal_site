@@ -22,12 +22,7 @@ export const MainHero:React.FC<MainHeroProps> = ({children, content_data, ...pro
     cta_button,
     hero_image
   } = content_data
-  console.log(
-    main_title,
-    subtitle,
-    cta_button,
-    hero_image
-  )
+
   const textanimation = useSpring({
     from: { opacity: 0, scale: 0, config:{ easing:true } },
     to: async (next, _) => {
