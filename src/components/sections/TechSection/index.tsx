@@ -41,6 +41,7 @@ export const TechSection:React.FC<StacksProps> = ({stacks_data}) => {
           } = stack
           return (
             <TechCard
+              key={stack_title}
               techTitle={stack_title}
               techSubtitle={tech_subtitle}
               moreInfo={more_informations}

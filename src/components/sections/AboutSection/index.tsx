@@ -53,7 +53,7 @@ export const AboutSection:React.FC<AboutProps> = ({content_data}) => {
         </div>
         <div className="mainContent">
           {contents.map((content) => (
-            <div>
+            <div key={content.title} >
               <h2>{content.title}</h2>
               <div dangerouslySetInnerHTML={{ __html:content.content }} />
             </div>
