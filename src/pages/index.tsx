@@ -88,7 +88,12 @@ interface ContentProps{
 export default function IndexPage({ content }: ContentProps) {
   const { locale } = useRouter()
 
-  const { hero_section, about_section, stacks } = content[0]
+  const {
+    hero_section,
+    about_section,
+    stacks,
+    projects_section
+  } = content[0]
 
   return (
     <Layout title={
@@ -102,7 +107,7 @@ export default function IndexPage({ content }: ContentProps) {
         <TechSection stacks_data={stacks} />
       </section>
       <section style={{scrollPadding:"5rem 0 0 0"}} id="projects" >
-        <ProjectsSection/>
+        <ProjectsSection content_data={projects_section} />
       </section>
       <section style={{scrollPadding:"5rem 0 0 0"}} id="services" >
         <ServicesSection/>

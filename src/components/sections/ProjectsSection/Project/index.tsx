@@ -6,8 +6,8 @@ import { Container } from './styles'
 
 interface ProjectProps extends HTMLAttributes<HTMLDivElement>{
   children?: ReactNode
-  direction: 'Right' | 'Left'
-  animation?: 'toRight' | 'toLeft'
+  direction: string
+  animation?: string
 }
 
 export const Project:React.FC<ProjectProps> = ({
