@@ -2,11 +2,12 @@ import { AnimatedImg } from 'components/AnimatedImg'
 import { RequestForm } from 'components/RequestForm'
 import { a, useSpring } from '@react-spring/web'
 import { FiMail } from 'react-icons/fi'
-import { FaWhatsapp, FaInstagram, FaGithub } from 'react-icons/fa'
+import { FaWhatsapp, FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa'
 
 import { useVisibility } from 'utils/useVisibility'
 import { Container } from './styles'
 import { Marginer } from 'components/Marginer'
+import { useRouter } from 'next/router'
 
 interface RequestMeetingProps {
   content_data: {
@@ -33,11 +34,12 @@ interface RequestMeetingProps {
 
 
 export const RequestAMeetingSection:React.FC<RequestMeetingProps> = ({content_data}) => {
+  const { locale } = useRouter()
   const { contact_title, contact_subtitle, form_fields } = content_data
+  const { whatsapp_message } = form_fields
 
   const whatAppNumber = '5512997204431'
-  const whatsAppMessage = 'Meu texto para o whats app'
-  const encodedWhatsAppMessage = encodeURI(whatsAppMessage)
+  const encodedWhatsAppMessage = encodeURI(whatsapp_message)
 
   const [isVisible, currentElement] = useVisibility<HTMLDivElement>(100)
 
@@ -72,12 +74,21 @@ export const RequestAMeetingSection:React.FC<RequestMeetingProps> = ({content_da
             <div className="contact">
               <FiMail />
               <a href="mailto:contact@johnnycarreiro.com" target="_blank"rel="noopener noreferrer" >
-                <h4>contact@johnnycarreiro.com</h4>
+                { locale === 'en-us'
+                  ? (<h4>contact@johnnycarreiro.com</h4>)
+                  : (<h4>contato@johnnycarreiro.com</h4>)
+                }
               </a>
             </div>
             <div className="contact">
               <FaInstagram />
               <a href="https://www.instagram.com/johnnycarreirodev/" target="_blank" rel="noopener noreferrer">
+                <h4>@johnnycarreirodev</h4>
+              </a>
+            </div>
+            <div className="contact">
+              <FaLinkedin />
+              <a href="hhtps://www.linkedin.com/in/johnnycarreirodev" target="_blank" rel="noopener noreferrer">
                 <h4>@johnnycarreirodev</h4>
               </a>
             </div>
