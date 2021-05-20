@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import React from 'react'
 
 import { Container } from './styles'
 
 const Navbar: React.FC = () => {
+  const { locale } = useRouter()
   return (
   <Container>
     <div className="container">
@@ -13,23 +15,47 @@ const Navbar: React.FC = () => {
 
       <div className="nav-btn">
         <div className="nav-links">
-          <ul>
-            <li className="nav-link">
-              <a href="/">Inicio</a>
-            </li>
-            <li className="nav-link" >
-              <a href="#about" >Sobre</a>
-            </li>
-            <li className="nav-link">
-              <a href="#projects" >Projetos</a>
-            </li>
-            <li className="nav-link">
-              <a href="#services" >Serviços</a>
-            </li>
-            <li className="nav-link">
-              <a href="#contact">Contato</a>
-            </li>
-          </ul>
+          {
+            locale === 'en-us'
+              ? (
+                <ul>
+                  <li className="nav-link">
+                    <a href="/">Home</a>
+                  </li>
+                  <li className="nav-link" >
+                    <a href="#about" >About</a>
+                  </li>
+                  <li className="nav-link">
+                    <a href="#projects" >Projects</a>
+                  </li>
+                  <li className="nav-link">
+                    <a href="#services" >Skills</a>
+                  </li>
+                  <li className="nav-link">
+                    <a href="#contact">Contacts</a>
+                  </li>
+                </ul>
+              )
+              : (
+                <ul>
+                  <li className="nav-link">
+                    <a href="/">Inicio</a>
+                  </li>
+                  <li className="nav-link" >
+                    <a href="#about" >Sobre</a>
+                  </li>
+                  <li className="nav-link">
+                    <a href="#projects" >Projetos</a>
+                  </li>
+                  <li className="nav-link">
+                    <a href="#services" >Serviços</a>
+                  </li>
+                  <li className="nav-link">
+                    <a href="#contact">Contatos</a>
+                  </li>
+                </ul>
+              )
+          }
         </div>
 
         {/* <div className="log-sign">
