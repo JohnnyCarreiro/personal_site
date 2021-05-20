@@ -63,7 +63,7 @@ export const ProjectsSection:React.FC<ProjectsProps> = ({content_data}) => {
                 <p>{summary}</p>
                 <Accordion title={cta_text}>
                   <h3>{project_subtitle}</h3>
-                  <p>{project_text}</p>
+                  <div dangerouslySetInnerHTML={{ __html:project_text }} />
                 </Accordion>
               </div>
           </Project>

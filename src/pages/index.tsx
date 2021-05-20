@@ -176,7 +176,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
           summary: RichText.asText(project.summary),
           cta_text: RichText.asText(project.cta_text),
           project_subtitle: RichText.asText(project.project_subtitle),
-          project_text: RichText.asText(project.project_text),
+          project_text: RichText.asHtml(project.project_text),
           direction: RichText.asText(project.direction),
           animation_direction: RichText.asText(project.animation_direction)
         }
