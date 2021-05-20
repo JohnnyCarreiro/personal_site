@@ -109,6 +109,30 @@ export const Container = styled.header`
     .nav-link:hover > a{
         transform: scale(1.1);
     }
+    .lang_switch {
+      margin-left: 2rem;
+
+    //   select {
+    //     background-color: transparent;
+    //     color: var(--white);
+    //     border-radius: 1rem;
+    //     padding: 0.5rem;
+    //  }
+      select {
+        width: 100%;
+        border: 1px solid ${({theme})=> theme.color.gray_900};
+        color: ${({theme})=> theme.color.gray_900};
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        line-height: 1.1rem;
+        background-color: transparent;
+        appearance: none;
+      }
+      .select::-ms-expand {
+        display: none;
+      }
+    }
 
     .hamburger-menu-container{
         flex: 1;

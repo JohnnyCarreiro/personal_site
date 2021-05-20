@@ -1,10 +1,16 @@
 import { useRouter } from 'next/router';
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 
 import { Container } from './styles'
 
 const Navbar: React.FC = () => {
-  const { locale } = useRouter()
+  const router  = useRouter()
+  const { locale } = router
+
+  const changeLanguage = (e:ChangeEvent<HTMLSelectElement>) => {
+    const locale = e.target.value
+    router.push(router.pathname, router.asPath, { locale });
+  }
   return (
   <Container>
     <div className="container">
@@ -34,6 +40,16 @@ const Navbar: React.FC = () => {
                   <li className="nav-link">
                     <a href="#contact">Contacts</a>
                   </li>
+                  <div className="lang_switch" >
+                    <select
+                      onChange={changeLanguage}
+                      defaultValue={locale}
+                      className="select"
+                    >
+                      <option className="text-black" value="en-us">EN  🇺🇸</option>
+                      <option className="text-black" value="pt-br">PT  🇧🇷</option>
+                    </select>
+                  </div>
                 </ul>
               )
               : (
@@ -53,6 +69,16 @@ const Navbar: React.FC = () => {
                   <li className="nav-link">
                     <a href="#contact">Contatos</a>
                   </li>
+                  <div className="lang_switch" >
+                    <select
+                      onChange={changeLanguage}
+                      defaultValue={locale}
+                      className="select"
+                    >
+                      <option className="text-black" value="en-us">EN  🇺🇸</option>
+                      <option className="text-black" value="pt-br">PT  🇧🇷</option>
+                    </select>
+                  </div>
                 </ul>
               )
           }
