@@ -8,8 +8,32 @@ import { useVisibility } from 'utils/useVisibility'
 import { Container } from './styles'
 import { Marginer } from 'components/Marginer'
 
+interface RequestMeetingProps {
+  content_data: {
+    contact_title: string
+    contact_subtitle: string
+    contact_image?: string
+    form_fields: {
+      name_label: string
+      name_field: string
+      email_label: string
+      email_field: string
+      phone_label: string
+      phone_field: string
+      company_label: string
+      company_field: string
+      subject_label: string
+      subject_field: string
+      message_label: string
+      message_field: string
+      whatsapp_message: string
+    }
+  }
+}
 
-export const RequestAMeetingSection:React.FC = () => {
+
+export const RequestAMeetingSection:React.FC<RequestMeetingProps> = ({content_data}) => {
+  const { contact_title, contact_subtitle, form_fields } = content_data
 
   const whatAppNumber = '5512997204431'
   const whatsAppMessage = 'Meu texto para o whats app'
@@ -33,10 +57,8 @@ export const RequestAMeetingSection:React.FC = () => {
   return (
     <Container ref={currentElement} >
       <a.div className="meeting" style={headerAnimation} >
-        <h2>Solicite uma reinião</h2>
-          <h4>
-            Pronto para iniciar um novo projeto conosco? Excelente! Ligue para nós ou nos envie uma e-mail e vamos retornar assim que possível!
-          </h4>
+        <h2>{contact_title}</h2>
+          <h4>{contact_subtitle}</h4>
       </a.div>
       <a.div className="container" style={animation} >
         <div className="contactContainer">
@@ -79,7 +101,7 @@ export const RequestAMeetingSection:React.FC = () => {
         </div>
         <div className="mainContent">
           <div className="form">
-            <RequestForm/>
+            <RequestForm form_fields={form_fields} />
           </div>
         </div>
       </a.div>

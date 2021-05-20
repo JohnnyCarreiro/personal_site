@@ -3,16 +3,17 @@ import { useField } from '@unform/core'
 import { IconBaseProps } from 'react-icons'
 import { FiAlertCircle, FiEye } from 'react-icons/fi'
 
-import { Container, Error, PassIcon } from './styles'
+import { Container, TextAreaContainer, Error, PassIcon } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLElement> {
-  name:string
-  type:string
-  placeholder:string
-  icon?:React.ComponentType<IconBaseProps>
+  name: string
+  type: string
+  placeholder: string
+  label: string
+  icon?: React.ComponentType<IconBaseProps>
 }
 
-export const TextArea:React.FC<InputProps> = ({name, icon:Icon,...props}) => {
+export const TextArea:React.FC<InputProps> = ({name, icon:Icon, label,...props}) => {
   const [ isFocused, setIsFocused ] = useState(false)
   const [ isFilled, setIsFilled ] = useState(false)
   const inputRef = useRef<HTMLTextAreaElement>(null)
@@ -37,26 +38,31 @@ export const TextArea:React.FC<InputProps> = ({name, icon:Icon,...props}) => {
   },[fieldName, registerField])
 
   return (
-    <Container isErrored={!! error} isFilled={isFilled} isFocused={isFocused} >
-      {Icon && <Icon size={20}/>}
-      <textarea
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        defaultValue={defaultValue}
-        ref={inputRef}
-        rows={6}
-        {...props}
-      />
-      {props.type === 'password' && (
-        <PassIcon>
-          <FiEye size={20} />
-        </PassIcon>
-      )}
-      {error  &&
-        <Error title={error} >
-          <FiAlertCircle color="c53030" size={20} />
-        </Error>
-      }
+    <Container>
+      <label>
+        {label}
+        <TextAreaContainer isErrored={!! error} isFilled={isFilled} isFocused={isFocused} >
+          {Icon && <Icon size={20}/>}
+          <textarea
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            defaultValue={defaultValue}
+            ref={inputRef}
+            rows={6}
+            {...props}
+          />
+          {props.type === 'password' && (
+            <PassIcon>
+              <FiEye size={20} />
+            </PassIcon>
+          )}
+          {error  &&
+            <Error title={error} >
+              <FiAlertCircle color="c53030" size={20} />
+            </Error>
+          }
+        </TextAreaContainer>
+      </label>
     </Container>
   );
 };

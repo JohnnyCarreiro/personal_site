@@ -93,7 +93,8 @@ export default function IndexPage({ content }: ContentProps) {
     about_section,
     stacks,
     projects_section,
-    skills_section
+    skills_section,
+    contacts_section
   } = content[0]
 
   return (
@@ -114,7 +115,7 @@ export default function IndexPage({ content }: ContentProps) {
         <SkillsSection content_data={skills_section} />
       </section>
       <section style={{scrollPadding:"5rem 0 0 0"}} id="contact" >
-        <RequestAMeetingSection/>
+        <RequestAMeetingSection content_data={contacts_section} />
       </section>
     </Layout>
   )

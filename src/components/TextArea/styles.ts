@@ -7,10 +7,19 @@ interface ContainerProps extends ThemeProps<Theme> {
   isFilled:boolean
   isErrored: boolean
 }
+export const Container = styled.div`
+  & + div {
+    margin-top:0.25rem;
+  }
+  > label {
+    padding-left:0.25rem;
+  }
+`
 
-export const Container = styled.div<ContainerProps>`
+export const TextAreaContainer = styled.div<ContainerProps>`
   background: '';
   border-radius:.5rem;
+  margin-top: 0.5rem;
   padding:1rem;
   width:100%;
   display:flex;
@@ -18,9 +27,6 @@ export const Container = styled.div<ContainerProps>`
   border: 2px solid ${({theme})=>theme.color.main};
   color: ${({theme})=>theme.color.gray_400};
 
-  & + div{
-    margin-top:.5rem;
-  }
   ${props=>props.isErrored && css`
     border-color:#c53030;
   `}

@@ -8,9 +8,19 @@ interface ContainerProps extends ThemeProps<Theme> {
   isErrored: boolean
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
+  & + div {
+    margin-top:0.25rem;
+  }
+  > label {
+    padding-left:0.25rem;
+  }
+`
+
+export const InputContainer = styled.div<ContainerProps>`
   background: '';
   border-radius:.5rem;
+  margin-top: .5rem;
   padding:1rem;
   width:100%;
   display:flex;
@@ -18,9 +28,6 @@ export const Container = styled.div<ContainerProps>`
   border: 2px solid ${({theme})=>theme.color.main};
   color: ${({theme})=>theme.color.gray_400};
 
-  & + div{
-    margin-top:.5rem;
-  }
   ${props=>props.isErrored && css`
     border-color:#c53030;
   `}
@@ -44,7 +51,7 @@ export const Container = styled.div<ContainerProps>`
     -webkit-text-fill-color: ${({theme})=>theme.color.secondary};
     -webkit-box-shadow: 0 0 0px 1000px #EDF5FF inset;
     box-shadow:0 0 0px 1000px #EDF5FF inset;
-    /* transition: background-color 5000s ease-in-out 0s; */
+    transition: background-color 5000s ease-in-out 0s;
   }
   input{
     flex:1;
