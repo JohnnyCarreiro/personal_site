@@ -8,5 +8,6 @@ export default async (request:NextApiRequest, response:NextApiResponse) => {
      response.json({ok: 'mensagem enviada'})
   } catch (error) {
     response.status(500).json({error})
+    console.log(error)
   }
 }
